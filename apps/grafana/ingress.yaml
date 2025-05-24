@@ -13,7 +13,7 @@ spec:
     - host: tulipacatt.online  # Replace with your domain
       http:
         paths:
-          - path: /
+          - path: /grafana
             pathType: Prefix
             backend:
               service:
