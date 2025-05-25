@@ -11,7 +11,9 @@ spec:
     chart: {{ .chart }}
     targetRevision: {{ .version }}
     helm:
-      valuesObject: {{ .values | toYaml | nindent 6 }}
+        {{- if .values }}
+        valuesObject: {{ .values | toYaml | nindent 6 }}
+        {{- end }}
   destination:
     server: https://kubernetes.default.svc
     namespace: {{ .namespace }}
