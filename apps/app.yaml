@@ -1,4 +1,4 @@
-# apps/app.yaml
+# Grafana Application
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
@@ -7,12 +7,15 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://grafana.github.io/helm-charts      # Helm chart source
-    chart: grafana
-    targetRevision: 6.61.0                               # Pick your desired version
+    repoURL: https://github.com/shaits/azure-k8s-monitoring-kub        # Your GitHub repo
+    targetRevision: main
+    path: apps/grafana                                                 # Only contains values.yaml
     helm:
+      chart: grafana
+      repo: https://grafana.github.io/helm-charts                      # Official chart repo
+      targetRevision: 6.61.0                                           # Or latest stable
       valueFiles:
-        - apps/grafana/values.yaml                       # Path in your GitHub repo
+        - values.yaml
   destination:
     server: https://kubernetes.default.svc
     namespace: monitoring
@@ -20,8 +23,8 @@ spec:
     automated:
       prune: true
       selfHeal: true
-
 ---
+# Prometheus Application
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
@@ -30,12 +33,15 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://prometheus-community.github.io/helm-charts  # ✅ Direct chart source
-    chart: kube-prometheus-stack
-    targetRevision: 58.2.0     # Or latest version you want
+    repoURL: https://github.com/shaits/azure-k8s-monitoring-kub        # Your GitHub repo
+    targetRevision: main
+    path: apps/prometheus                                              # Only contains values.yaml
     helm:
+      chart: kube-prometheus-stack
+      repo: https://prometheus-community.github.io/helm-charts         # Official chart repo
+      targetRevision: 58.2.0                                           # Or latest stable
       valueFiles:
-        - apps/prometheus/values.yaml  # ✅ Relative to your Git repo
+        - values.yaml
   destination:
     server: https://kubernetes.default.svc
     namespace: monitoring
@@ -43,4 +49,3 @@ spec:
     automated:
       prune: true
       selfHeal: true
-
