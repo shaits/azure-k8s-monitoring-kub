@@ -10,6 +10,11 @@ spec:
     repoURL: https://github.com/shaits/azure-k8s-monitoring-kub
     targetRevision: main
     path: apps/grafana
+    helm:
+      chart: grafana
+      repo: https://grafana.github.io/helm-charts
+      valueFiles:
+        - values.yaml
   destination:
     server: https://kubernetes.default.svc
     namespace: monitoring
@@ -29,6 +34,11 @@ spec:
     repoURL: https://github.com/shaits/azure-k8s-monitoring-kub
     targetRevision: main
     path: apps/prometheus
+    helm:
+      chart: kube-prometheus-stack
+      repo: https://prometheus-community.github.io/helm-charts
+      valueFiles:
+        - values.yaml
   destination:
     server: https://kubernetes.default.svc
     namespace: monitoring
