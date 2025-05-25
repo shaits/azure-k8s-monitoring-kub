@@ -1,0 +1,22 @@
+# root-application.yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: app-of-apps
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/shaits/azure-k8s-monitoring-kub.git   # 👈 Your Git repo
+    targetRevision: HEAD                                # Or a specific branch
+    path: app-of-apps                                    # 👈 Path to the Helm chart
+    helm:
+      valueFiles:
+        - values.yaml
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: argocd
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
