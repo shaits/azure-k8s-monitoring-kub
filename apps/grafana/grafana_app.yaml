@@ -9,7 +9,7 @@ spec:
   source:
     repoURL: https://grafana.github.io/helm-charts     # Where to fetch the chart from
     chart: grafana
-    targetRevision: 6.61.0                             # Optional: chart version
+    targetRevision: 6.61.0                           # Optional: chart version
     helm:
       valueFiles:
         - values.yaml                                  # Must be in the same directory

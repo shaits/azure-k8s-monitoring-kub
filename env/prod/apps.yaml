@@ -15,4 +15,4 @@ spec:
   syncPolicy:
     automated:
       prune: true
-      selfHeal: false              # Optional: let you control prod syncs manually
+      selfHeal: true              # Optional: let you control prod syncs manually
