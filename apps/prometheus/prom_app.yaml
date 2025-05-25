@@ -12,7 +12,7 @@ spec:
     targetRevision: 25.21.0      # Replace with desired version (or omit for latest)
     helm:
       valueFiles:
-        - values.yaml            # This looks for a values.yaml in the chart path
+        - apps/prometheus/values.yaml        # This looks for a values.yaml in the chart path
   destination:
     server: https://kubernetes.default.svc
     namespace: monitoring

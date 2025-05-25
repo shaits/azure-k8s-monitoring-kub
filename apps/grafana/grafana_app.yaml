@@ -12,7 +12,7 @@ spec:
     targetRevision: 6.61.0                           # Optional: chart version
     helm:
       valueFiles:
-        - values.yaml                                  # Must be in the same directory
+        - apps/grafana/values.yaml                             # Must be in the same directory
   destination:
     server: https://kubernetes.default.svc
     namespace: monitoring
