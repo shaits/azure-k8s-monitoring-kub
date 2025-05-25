@@ -1,0 +1,18 @@
+# app-of-apps/values.yaml
+apps:
+  grafana:
+    name: grafana
+    namespace: monitoring
+    repoURL: https://grafana.github.io/helm-charts
+    chart: grafana
+    version: 6.60.0
+    targetRevision: HEAD
+    values: {}
+  prometheus:
+    name: prometheus
+    namespace: monitoring
+    repoURL: https://prometheus-community.github.io/helm-charts
+    chart: prometheus
+    version: 25.8.0
+    targetRevision: HEAD
+    values: {}

@@ -1,0 +1,4 @@
+{{- range $key, $app := .Values.apps }}
+{{- include "app-of-apps.application" $app }}
+---
+{{- end }}

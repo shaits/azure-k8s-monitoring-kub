@@ -1,0 +1,5 @@
+# app-of-apps/Chart.yaml
+apiVersion: v2
+name: app-of-apps
+description: ArgoCD App of Apps chart
+version: 0.1.0
