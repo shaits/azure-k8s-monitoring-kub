@@ -7,14 +7,12 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/shaits/azure-k8s-monitoring-kub
-    targetRevision: main
-    path: apps/grafana
+    repoURL: https://grafana.github.io/helm-charts      # Helm chart source
+    chart: grafana
+    targetRevision: 6.61.0                               # Pick your desired version
     helm:
-      chart: grafana
-      repo: https://grafana.github.io/helm-charts
       valueFiles:
-        - values.yaml
+        - apps/grafana/values.yaml                       # Path in your GitHub repo
   destination:
     server: https://kubernetes.default.svc
     namespace: monitoring
@@ -22,6 +20,7 @@ spec:
     automated:
       prune: true
       selfHeal: true
+
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
@@ -31,14 +30,12 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/shaits/azure-k8s-monitoring-kub
-    targetRevision: main
-    path: apps/prometheus
+    repoURL: https://prometheus-community.github.io/helm-charts  # ✅ Direct chart source
+    chart: kube-prometheus-stack
+    targetRevision: 58.2.0     # Or latest version you want
     helm:
-      chart: kube-prometheus-stack
-      repo: https://prometheus-community.github.io/helm-charts
       valueFiles:
-        - values.yaml
+        - apps/prometheus/values.yaml  # ✅ Relative to your Git repo
   destination:
     server: https://kubernetes.default.svc
     namespace: monitoring
@@ -46,3 +43,4 @@ spec:
     automated:
       prune: true
       selfHeal: true
+
