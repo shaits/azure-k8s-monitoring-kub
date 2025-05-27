@@ -21,6 +21,7 @@ apps:
           enabled: true
           annotations:
             nginx.ingress.kubernetes.io/rewrite-target: /
+            kubernetes.io/ingress.class: nginx
           hosts:
             - prometheus.tulipacatt.online
 
