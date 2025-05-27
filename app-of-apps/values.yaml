@@ -15,4 +15,15 @@ apps:
     chart: prometheus
     version: 25.8.0
     targetRevision: HEAD
-    values: {}
+    values: 
+      server:
+        ingress:
+          enabled: true
+          annotations:
+            nginx.ingress.kubernetes.io/rewrite-target: /
+          hosts:
+            - prometheus.tulipacatt.online   # 👈 Replace with your domain
+          paths:
+            - /
+          pathType: ImplementationSpecific
+
