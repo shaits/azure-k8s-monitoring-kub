@@ -13,6 +13,8 @@ spec:
     helm:
         {{- if .values }}
         valuesObject: {{ .values | toYaml | nindent 6 }}
+        {{- else }}
+        valuesObject: {}
         {{- end }}
   destination:
     server: https://kubernetes.default.svc
