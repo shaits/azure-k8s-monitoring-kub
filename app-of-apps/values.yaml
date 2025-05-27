@@ -22,8 +22,6 @@ apps:
           annotations:
             nginx.ingress.kubernetes.io/rewrite-target: /
           hosts:
-            - prometheus.tulipacatt.online   # 👈 Replace with your domain
-          paths:
-            - /
-          pathType: ImplementationSpecific
+            - prometheus.tulipacatt.online
+
 
