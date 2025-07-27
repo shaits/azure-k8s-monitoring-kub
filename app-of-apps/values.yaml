@@ -7,7 +7,10 @@ apps:
     chart: grafana
     version: 6.60.0
     targetRevision: HEAD
-    values: {}
+    values: 
+      server:
+        nodeSelector:
+          agentpool: publicpool
   prometheus:
     name: prometheus
     namespace: monitoring
@@ -17,11 +20,11 @@ apps:
     targetRevision: HEAD
     values: 
       server:
+        nodeSelector:
+          agentpool: publicpool
         ingress:
           enabled: true
           ingressClassName: nginx
-          annotations:
-            nginx.ingress.kubernetes.io/rewrite-target: /
           hosts:
             - prometheus.tulipacatt.online
 
