@@ -26,6 +26,6 @@ apps:
           enabled: true
           ingressClassName: nginx
           hosts:
-            - prometheus.tulipacatt.online
+            - goddammt.blah.com
 
 
